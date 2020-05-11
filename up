@@ -262,7 +262,7 @@ passwd
 }
 
 cp_certs(){
-cp -arv /etc/letsencrypt/live/$domain /root/
+cp -Rv /etc/letsencrypt/live/$domain /root/
 rm -f /root/$domain/README
 rm -f /root/$domain/cert.pem
 rm -f /root/$domain/chain.pem
