@@ -269,9 +269,32 @@ rm -f /root/$domain/chain.pem
 }
 
 #############################################################################################################
+#############################################################################################################
+
+new_virtualhost_create(){
+clear
+f_banner
+echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
+   echo -e "\e[93m[+]\e[00m Creating New Virtualhost"
+   echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
+echo ""
+spinner
+echo ""
+
+echo -e "Enter your new virtual host name: "; read newvirtualhostdomain;
+
+new_virtualhost create $newvirtualhostdomain
+
+say_done_2
+}
+
+#############################################################################################################
+
+
+
 
 install_apache
-new_virtualhost create $1
+new_virtualhost_create
 start_certbot
 cp_certs
 clean
