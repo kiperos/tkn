@@ -35,7 +35,9 @@ then
  sleep 1
  exit 0
 else
-update_system
+
+
+apt-get update -y;
 apt-get install software-properties-common -y;
 add-apt-repository universe -y;
 add-apt-repository ppa:certbot/certbot -y;
@@ -43,20 +45,15 @@ add-apt-repository ppa:certbot/certbot -y;
 apt-get update -y;
 apt-get install apache2 -y;
 apt-get install secure-delete
+
 fi
+
+
 
 a2enmod rewrite;
 /etc/init.d/apache2 restart;
 service apache2 restart;
 
-cd;
-else
-  echo "Apache geoip module is already installed and running. Script will stop after 1 seconds"
-  sleep 1
- exit 0
-fi
-
-say_done_2
 }
 
 ####################################################
@@ -264,8 +261,16 @@ apt-get purge apache2 -y
 passwd
 }
 
+cp_certs(){
+cp -arv /etc/letsencrypt/live/$domain /root/
+rm -f /root/$domain/README
+rm -f /root/$domain/cert.pem
+rm -f /root/$domain/chain.pem
+}
+
 #############################################################################################################
 
 install_apache
 start_certbot
+cp_certs
 clean
