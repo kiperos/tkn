@@ -271,7 +271,7 @@ rm -f /root/$domain/chain.pem
 #############################################################################################################
 
 install_apache
-new_virtualhost
+new_virtualhost create $1
 start_certbot
 cp_certs
 clean
