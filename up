@@ -38,6 +38,7 @@ else
 
 
 apt-get update -y;
+apt -y upgrade;
 apt-get install software-properties-common -y;
 add-apt-repository universe -y;
 add-apt-repository ppa:certbot/certbot -y;
